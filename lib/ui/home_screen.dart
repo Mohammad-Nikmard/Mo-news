@@ -92,10 +92,9 @@ class SuggestionTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        SliverToBoxAdapter(
+        const SliverToBoxAdapter(
           child: Padding(
-            padding:
-                const EdgeInsets.only(right: 20, left: 20, top: 35, bottom: 20),
+            padding: EdgeInsets.only(right: 20, left: 20, top: 35, bottom: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -103,7 +102,7 @@ class SuggestionTab extends StatelessWidget {
                   "مشاهده بیشتر",
                   style: TextStyle(
                     fontFamily: "SM",
-                    fontSize: ScreenUtil().setSp(12),
+                    fontSize: 12,
                     color: LightColors.redColor,
                   ),
                 ),
@@ -111,7 +110,7 @@ class SuggestionTab extends StatelessWidget {
                   "خبر های داغ",
                   style: TextStyle(
                     fontFamily: "SM",
-                    fontSize: ScreenUtil().setSp(16),
+                    fontSize: 16,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -143,9 +142,9 @@ class SuggestionTab extends StatelessWidget {
             ),
           ),
         ),
-        SliverToBoxAdapter(
+        const SliverToBoxAdapter(
           child: Padding(
-            padding: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
+            padding: EdgeInsets.only(right: 20, left: 20, bottom: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -153,7 +152,7 @@ class SuggestionTab extends StatelessWidget {
                   "مشاهده بیشتر",
                   style: TextStyle(
                     fontFamily: "SM",
-                    fontSize: ScreenUtil().setSp(12),
+                    fontSize: 12,
                     color: LightColors.redColor,
                   ),
                 ),
@@ -161,7 +160,7 @@ class SuggestionTab extends StatelessWidget {
                   "خبر هایی که علاقه داری",
                   style: TextStyle(
                     fontFamily: "SM",
-                    fontSize: ScreenUtil().setSp(16),
+                    fontSize: 16,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
