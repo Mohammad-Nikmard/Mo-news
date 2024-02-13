@@ -6,13 +6,13 @@ class NewsDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NestedScrollView(
-      headerSliverBuilder: (context, isScrolled) {
-        return [
-          const AppBar(),
-          SliverToBoxAdapter(
-            child: Container(
-              color: LightColors.whiteColor,
+    return Scaffold(
+      backgroundColor: LightColors.whiteColor,
+      body: NestedScrollView(
+        headerSliverBuilder: (context, isScrolled) {
+          return [
+            const AppBar(),
+            SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
@@ -120,12 +120,9 @@ class NewsDetailScreen extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-        ];
-      },
-      body: Container(
-        color: LightColors.whiteColor,
-        child: Padding(
+          ];
+        },
+        body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: SingleChildScrollView(
             child: Column(
@@ -180,7 +177,12 @@ class AppBar extends StatelessWidget {
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 25),
-          child: Image.asset("images/arrow-right.png"),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Image.asset("images/arrow-right.png"),
+          ),
         ),
       ],
       leadingWidth: 85,
@@ -195,7 +197,7 @@ class AppBar extends StatelessWidget {
         ],
       ),
       scrolledUnderElevation: 0,
-      expandedHeight: 300,
+      expandedHeight: 280,
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(25),
         child: Container(

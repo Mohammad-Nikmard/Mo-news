@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mo_news/themes/light_theme.dart';
-import 'package:mo_news/ui/news_detail_screen.dart';
+import 'package:mo_news/ui/dashboard_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           theme: lightTheme,
           debugShowCheckedModeBanner: false,
-          home: const NewsDetailScreen(),
+          home: const DashBoardScreen(),
         );
       },
     );

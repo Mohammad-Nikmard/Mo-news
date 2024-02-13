@@ -1,74 +1,136 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:mo_news/constants/constants.dart';
+import 'package:mo_news/ui/addpost_screen.dart';
+import 'package:mo_news/ui/feed_screen.dart';
+import 'package:mo_news/ui/home_screen.dart';
+import 'package:mo_news/ui/profile_screen.dart';
+import 'package:mo_news/ui/saved_screen.dart';
 
-class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({super.key});
+class DashBoardScreen extends StatefulWidget {
+  const DashBoardScreen({super.key});
 
   @override
-  State<DashboardScreen> createState() => _DashboardScreenState();
+  DashBoardScreenState createState() => DashBoardScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen> {
+class DashBoardScreenState extends State<DashBoardScreen> {
+  var currentIndex = 0;
+
+  @override
+  void initState() {
+    currentIndex = 4;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    PersistentTabController controller;
-
-    controller = PersistentTabController(initialIndex: 3);
-
-    return PersistentTabView(
-      context,
-      controller: controller,
-      screens: _buildScreens(),
-      items: _navBarsItems(),
-      confineInSafeArea: true,
-      backgroundColor: Colors.white, // Default is Colors.white.
-      handleAndroidBackButtonPress: true, // Default is true.
-      resizeToAvoidBottomInset:
-          true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
-      stateManagement: true, // Default is true.
-      hideNavigationBarWhenKeyboardShows:
-          true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
-      decoration: NavBarDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        colorBehindNavBar: Colors.white,
+    return Scaffold(
+      bottomNavigationBar: Container(
+        height: 60,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(.15),
+              blurRadius: 30,
+              offset: const Offset(0, 10),
+            ),
+          ],
+        ),
+        child: ListView.builder(
+          itemCount: 5,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) => InkWell(
+            onTap: () {
+              setState(
+                () {
+                  currentIndex = index;
+                },
+              );
+            },
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            child: Items(currentIndex: currentIndex, index: index),
+          ),
+        ),
       ),
-      popAllScreensOnTapOfSelectedTab: true,
-      popActionScreens: PopActionScreensType.all,
-      itemAnimationProperties: const ItemAnimationProperties(
-        // Navigation Bar's items animation properties.
-        duration: Duration(milliseconds: 200),
-        curve: Curves.ease,
+      body: IndexedStack(
+        index: currentIndex,
+        children: const [
+          ProfileScreen(),
+          SavedScreen(),
+          AddPostScreen(),
+          FeedScreen(),
+          HomeScreen(),
+        ],
       ),
-      screenTransitionAnimation: const ScreenTransitionAnimation(
-        // Screen transition animation on change of selected tab.
-        animateTabTransition: true,
-        curve: Curves.ease,
-        duration: Duration(milliseconds: 200),
-      ),
-      navBarStyle:
-          NavBarStyle.style1, // Choose the nav bar style with this property.
     );
   }
 }
 
-List<Widget> _buildScreens() {
-  return [];
-}
+// ignore: must_be_immutable
+class Items extends StatelessWidget {
+  Items({super.key, required this.currentIndex, required this.index});
+  final int currentIndex;
+  final int index;
 
-List<PersistentBottomNavBarItem> _navBarsItems() {
-  return [
-    PersistentBottomNavBarItem(
-      icon: const Icon(CupertinoIcons.home),
-      title: ("Home"),
-      activeColorPrimary: CupertinoColors.activeBlue,
-      inactiveColorPrimary: CupertinoColors.systemGrey,
-    ),
-    PersistentBottomNavBarItem(
-      icon: const Icon(CupertinoIcons.settings),
-      title: ("Settings"),
-      activeColorPrimary: CupertinoColors.activeBlue,
-      inactiveColorPrimary: CupertinoColors.systemGrey,
-    ),
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Padding(
+      padding: const EdgeInsets.only(left: 8),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.decelerate,
+            margin: EdgeInsets.only(
+              bottom: index == currentIndex ? 0 : size.width * .029,
+              right: size.width * .0422,
+              left: size.width * .0422,
+            ),
+            width: 36,
+            height: index == currentIndex ? 6 : 0,
+            decoration: BoxDecoration(
+              color: LightColors.redColor,
+              boxShadow: [
+                BoxShadow(
+                  color: (currentIndex == index)
+                      ? LightColors.redColor
+                      : Colors.transparent,
+                  blurRadius: 20,
+                  spreadRadius: -20,
+                  offset: const Offset(0, 3),
+                ),
+              ],
+              borderRadius: const BorderRadius.vertical(
+                bottom: Radius.circular(10),
+              ),
+            ),
+          ),
+          (currentIndex == index)
+              ? listOfActiveImages[index]
+              : listOfImages[index],
+          SizedBox(height: size.width * .03),
+        ],
+      ),
+    );
+  }
+
+  List<Image> listOfImages = [
+    Image.asset("images/icon_profile.png"),
+    Image.asset("images/icon_save_bottomNavigation.png"),
+    Image.asset("images/icon_bottomNavigation_add.png"),
+    Image.asset("images/icon_discover.png"),
+    Image.asset("images/icon_home.png"),
+  ];
+
+  List<Image> listOfActiveImages = [
+    Image.asset("images/icon_profile.png"),
+    Image.asset("images/icon_save_bottomNavigation.png"),
+    Image.asset("images/icon_bottomNavigation_add.png"),
+    Image.asset("images/active_icon_discover.png"),
+    Image.asset("images/active_icon_home.png"),
   ];
 }
