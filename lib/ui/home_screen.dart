@@ -73,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                 child: TabBarView(
                   children: [
                     Container(),
-                    SuggestionTab(),
+                    const SuggestionTab(),
                   ],
                 ),
               ),
