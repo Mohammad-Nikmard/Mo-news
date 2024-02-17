@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mo_news/constants/constants.dart';
+import 'package:mo_news/ui/dashboard_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -9,6 +10,22 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    Future.delayed(
+      const Duration(seconds: 3),
+      () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const DashBoardScreen(),
+          ),
+        );
+      },
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
