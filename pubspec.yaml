@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   marquee: ^2.2.3
+  animations: ^2.0.11
   flutter_screenutil: ^5.9.0
 
 

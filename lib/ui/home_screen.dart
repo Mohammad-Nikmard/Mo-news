@@ -1,8 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:animations/animations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mo_news/constants/constants.dart';
+import 'package:mo_news/ui/news_detail_screen.dart';
 import 'package:mo_news/widgets/fav_news_widget.dart';
 import 'package:mo_news/widgets/hot_news_widget.dart';
+import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -127,14 +129,30 @@ class SuggestionTab extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 15),
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-                  children: const [
+                  children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 15),
-                      child: HotNewsWidget(),
+                      padding: const EdgeInsets.only(left: 15),
+                      child: OpenContainer(
+                        openColor: Colors.transparent,
+                        transitionType: ContainerTransitionType.fade,
+                        transitionDuration: const Duration(milliseconds: 500),
+                        openBuilder: (context, action) =>
+                            const NewsDetailScreen(),
+                        closedBuilder: (context, action) =>
+                            const HotNewsWidget(),
+                      ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 15),
-                      child: HotNewsWidget(),
+                      padding: const EdgeInsets.only(left: 15),
+                      child: OpenContainer(
+                        openColor: Colors.transparent,
+                        transitionType: ContainerTransitionType.fade,
+                        transitionDuration: const Duration(milliseconds: 500),
+                        openBuilder: (context, action) =>
+                            const NewsDetailScreen(),
+                        closedBuilder: (context, action) =>
+                            const HotNewsWidget(),
+                      ),
                     ),
                   ],
                 ),

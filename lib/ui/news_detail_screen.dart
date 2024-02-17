@@ -11,7 +11,7 @@ class NewsDetailScreen extends StatelessWidget {
       body: NestedScrollView(
         headerSliverBuilder: (context, isScrolled) {
           return [
-            const AppBar(),
+            getAppBar(context),
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -168,76 +168,71 @@ class NewsDetailScreen extends StatelessWidget {
   }
 }
 
-class AppBar extends StatelessWidget {
-  const AppBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverAppBar(
-      actions: [
+Widget getAppBar(BuildContext context) {
+  return SliverAppBar(
+    actions: [
+      Padding(
+        padding: const EdgeInsets.only(right: 25),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Image.asset("images/arrow-right.png"),
+        ),
+      ),
+    ],
+    leadingWidth: 85,
+    leading: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
         Padding(
-          padding: const EdgeInsets.only(right: 25),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Image.asset("images/arrow-right.png"),
+          padding: const EdgeInsets.only(left: 25),
+          child: Image.asset('images/icon_menu.png'),
+        ),
+        Image.asset("images/icon_save.png")
+      ],
+    ),
+    scrolledUnderElevation: 0,
+    expandedHeight: 280,
+    bottom: PreferredSize(
+      preferredSize: const Size.fromHeight(25),
+      child: Container(
+        height: 30,
+        decoration: const BoxDecoration(
+          color: LightColors.whiteColor,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(35),
+            topRight: Radius.circular(35),
           ),
         ),
-      ],
-      leadingWidth: 85,
-      leading: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 25),
-            child: Image.asset('images/icon_menu.png'),
-          ),
-          Image.asset("images/icon_save.png")
-        ],
-      ),
-      scrolledUnderElevation: 0,
-      expandedHeight: 280,
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(25),
-        child: Container(
-          height: 30,
-          decoration: const BoxDecoration(
-            color: LightColors.whiteColor,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(35),
-              topRight: Radius.circular(35),
-            ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 3.8,
-                width: 75,
-                decoration: const BoxDecoration(
-                  color: LightColors.greyColor,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20),
-                  ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 3.8,
+              width: 75,
+              decoration: const BoxDecoration(
+                color: LightColors.greyColor,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20),
                 ),
               ),
-            ],
-          ),
-        ),
-      ),
-      stretch: true,
-      flexibleSpace: const FlexibleSpaceBar(
-        background: DecoratedBox(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("images/cover_hotnews1.png"),
             ),
+          ],
+        ),
+      ),
+    ),
+    stretch: true,
+    flexibleSpace: const FlexibleSpaceBar(
+      background: DecoratedBox(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("images/cover_hotnews1.png"),
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
 }
 
 class Lable extends StatelessWidget {
