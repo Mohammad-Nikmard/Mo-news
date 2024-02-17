@@ -133,25 +133,43 @@ class SuggestionTab extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 15),
                       child: OpenContainer(
+                        closedColor: Colors.transparent,
+                        openElevation: 0,
+                        closedElevation: 0,
                         openColor: Colors.transparent,
                         transitionType: ContainerTransitionType.fade,
                         transitionDuration: const Duration(milliseconds: 500),
                         openBuilder: (context, action) =>
                             const NewsDetailScreen(),
-                        closedBuilder: (context, action) =>
-                            const HotNewsWidget(),
+                        closedBuilder: (context, action) => const HotNewsWidget(
+                          title:
+                              "پاسخ منفی پورتو به چلسی برای جذب طارمی با طعم تهدید!",
+                          image: "cover1.png",
+                          label: "ورزشی",
+                          agency: "خبرگذاری ورزش سه",
+                          agencyImage: "page_cover3.png",
+                        ),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 15),
                       child: OpenContainer(
+                        closedColor: Colors.transparent,
+                        openElevation: 0,
+                        closedElevation: 0,
                         openColor: Colors.transparent,
                         transitionType: ContainerTransitionType.fade,
                         transitionDuration: const Duration(milliseconds: 500),
                         openBuilder: (context, action) =>
                             const NewsDetailScreen(),
-                        closedBuilder: (context, action) =>
-                            const HotNewsWidget(),
+                        closedBuilder: (context, action) => const HotNewsWidget(
+                          title:
+                              "استقلال یک - صنعت‌نفت صفر: حفظ صدر با یک سوپرگل",
+                          image: "cover2.jpg",
+                          label: "ورزشی",
+                          agency: "خبرگذاری ورزش سه",
+                          agencyImage: "page_cover3.png",
+                        ),
                       ),
                     ),
                   ],
@@ -187,14 +205,35 @@ class SuggestionTab extends StatelessWidget {
           ),
         ),
         SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) {
-              return const Padding(
+          delegate: SliverChildListDelegate(
+            [
+              const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15),
-                child: FavNewsWidget(),
-              );
-            },
-            childCount: 2,
+                child: FavNewsWidget(
+                  title:
+                      "مارک زاکربرگ: اپل توسعه رقیبی برای اپ استور در اتحادیه اروپا را بسیار دشوار کرده است",
+                  subtitle:
+                      "علاوه‌بر اسپاتیفای، اپیک گیمز و مایکروسافت حالا شرکت متا نیز به منتقدان سیاست‌های جدید اپل پیوست.",
+                  image: "fav_cover1.jpg",
+                  label: "تکنولوژی",
+                  agency: "دیجیاتو",
+                  agencyImage: "page_cover2.png",
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: FavNewsWidget(
+                  title:
+                      "ویوو V30 معرفی شد؛ اولین گوشی بازار با اسنپدراگون 7 نسل 3",
+                  subtitle:
+                      "این گوشی از یک باتری بزرگ 5000 میلی‌آمپرساعتی برخوردار است.",
+                  image: "fav_cover2.jpg",
+                  label: "تکنولوژی",
+                  agency: "زومیت",
+                  agencyImage: "page_cover1.png",
+                ),
+              ),
+            ],
           ),
         ),
       ],

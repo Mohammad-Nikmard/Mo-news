@@ -3,7 +3,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mo_news/constants/constants.dart';
 
 class FavNewsWidget extends StatelessWidget {
-  const FavNewsWidget({super.key});
+  const FavNewsWidget(
+      {super.key,
+      required this.label,
+      required this.title,
+      required this.subtitle,
+      required this.image,
+      required this.agency,
+      required this.agencyImage});
+  final String title;
+  final String subtitle;
+  final String label;
+  final String image;
+  final String agency;
+  final String agencyImage;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +57,7 @@ class FavNewsWidget extends StatelessWidget {
                           ),
                           Flexible(
                             child: Text(
-                              "ساعت هوشمند گارمین فیلان بیسار بهمان با عمر باتری 11 روزه معرفی شد",
+                              title,
                               style: Theme.of(context).textTheme.titleMedium,
                               textDirection: TextDirection.rtl,
                             ),
@@ -54,7 +67,7 @@ class FavNewsWidget extends StatelessWidget {
                           ),
                           Flexible(
                             child: Text(
-                              "ساعت هوشمند گارمین فیلان بیسار بهمان با عمر باتری 11 روزه معرفی شد",
+                              subtitle,
                               style: Theme.of(context).textTheme.bodySmall,
                               textDirection: TextDirection.rtl,
                             ),
@@ -71,7 +84,7 @@ class FavNewsWidget extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                "خبرگذاری زومیت",
+                                agency,
                                 style: TextStyle(
                                   fontFamily: "SM",
                                   fontSize: ScreenUtil().setSp(10),
@@ -81,7 +94,7 @@ class FavNewsWidget extends StatelessWidget {
                               ),
                               const SizedBox(width: 7),
                               Image.asset(
-                                "images/page_cover1.png",
+                                "images/$agencyImage",
                                 height: ScreenUtil().setHeight(16),
                                 width: ScreenUtil().setWidth(16),
                               ),
@@ -96,7 +109,19 @@ class FavNewsWidget extends StatelessWidget {
               const SizedBox(width: 10),
               Stack(
                 children: [
-                  Image.asset("images/fav_cover1.png"),
+                  Container(
+                    height: 116,
+                    width: 116,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage("images/$image"),
+                      ),
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                    ),
+                  ),
                   Positioned(
                     top: 5,
                     right: 5,
@@ -111,7 +136,7 @@ class FavNewsWidget extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          "تکنولوژی",
+                          label,
                           style: Theme.of(context).textTheme.labelSmall,
                         ),
                       ),

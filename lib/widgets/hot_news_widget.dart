@@ -2,7 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:mo_news/constants/constants.dart';
 
 class HotNewsWidget extends StatelessWidget {
-  const HotNewsWidget({super.key});
+  const HotNewsWidget({
+    super.key,
+    required this.image,
+    required this.label,
+    required this.title,
+    required this.agency,
+    required this.agencyImage,
+  });
+  final String image;
+  final String label;
+  final String title;
+  final String agency;
+  final String agencyImage;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +43,20 @@ class HotNewsWidget extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  Image.asset('images/cover1.png'),
+                  Container(
+                    height: 159,
+                    width: 271,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      image: DecorationImage(
+                        image: AssetImage('images/$image'),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                    ),
+                  ),
                   Positioned(
                     top: 10,
                     right: 10,
@@ -46,7 +71,7 @@ class HotNewsWidget extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          "ورزشی",
+                          label,
                           style: Theme.of(context).textTheme.labelSmall,
                         ),
                       ),
@@ -97,7 +122,7 @@ class HotNewsWidget extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Text(
-                    "پاسخ منفی پورتو به چلسی برای جذب طارمی با طعم تهدید!",
+                    title,
                     style: Theme.of(context).textTheme.titleMedium,
                     textDirection: TextDirection.rtl,
                   ),
@@ -115,9 +140,9 @@ class HotNewsWidget extends StatelessWidget {
                     Image.asset("images/short-Menu.png"),
                     Row(
                       children: [
-                        const Text(
-                          "خبرگذاری آخرین خبر",
-                          style: TextStyle(
+                        Text(
+                          agency,
+                          style: const TextStyle(
                             fontFamily: "SM",
                             fontSize: 10,
                             color: LightColors.greyColor,
@@ -125,7 +150,9 @@ class HotNewsWidget extends StatelessWidget {
                         ),
                         const SizedBox(width: 7),
                         Image.asset(
-                          "images/last_news_icon.png",
+                          "images/$agencyImage",
+                          height: 15,
+                          width: 16,
                         ),
                       ],
                     ),

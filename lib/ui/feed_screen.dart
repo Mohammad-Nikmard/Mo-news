@@ -93,11 +93,24 @@ class FeedScreen extends StatelessWidget {
                           children: const [
                             Padding(
                               padding: EdgeInsets.only(left: 15),
-                              child: HotNewsWidget(),
+                              child: HotNewsWidget(
+                                title:
+                                    "بدهی دولت آمریکا از54 تریلیون دلار عبور میکند",
+                                image: "cover3.jpg",
+                                label: "اقتصادی",
+                                agency: "خبرگذاری آخرین خبر",
+                                agencyImage: "last_news_icon.png",
+                              ),
                             ),
                             Padding(
                               padding: EdgeInsets.only(left: 15),
-                              child: HotNewsWidget(),
+                              child: HotNewsWidget(
+                                title: "افت شدید بارش ها در 7 استان کشور",
+                                image: "cover4.jpg",
+                                label: "هواشناسی",
+                                agency: "خبرگذاری آخرین خبر",
+                                agencyImage: "last_news_icon.png",
+                              ),
                             ),
                           ],
                         ),
