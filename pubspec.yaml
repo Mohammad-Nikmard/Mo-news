@@ -31,8 +31,7 @@ flutter:
 
   assets:
     - images/
-  #   - images/a_dot_ham.jpeg
-
+    - assets/
   fonts:
     - family: SM
       fonts:
