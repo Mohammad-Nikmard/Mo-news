@@ -1,16 +1,24 @@
-# mo_news
+# Mo-news
+![mockup](assets/mockup.png)
 
-A new Flutter project.
+## Overview 
+This is a ui design of a big news app that lists different types of news and can show each news by their publisher, photo, title, subtitle, release date and more. The ui design has been written with plain dart language and flutter framework.
 
-## Getting Started
+## Features 
+ - **Main Activity** : Lists different types of news any each field.
+ - **News Feature** : Each news has title, subtitle, realse date, publisher and description.
 
-This project is a starting point for a Flutter application.
+## Packages Used 
+  - marquee
+  - animations
+  - flutter_screenutil
 
-A few resources to get you started if this is your first Flutter project:
+## Technologies Used 
+ - Language : Dart
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Project Setup
+To run the application do the following :
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ 1. Clone the repository or download it.
+ 2. Open the project in Android Studio / VScode.
+ 3. Build and run the app on an Android emulator or physical device by your choice.
